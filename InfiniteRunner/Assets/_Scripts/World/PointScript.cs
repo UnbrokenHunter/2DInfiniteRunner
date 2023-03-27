@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PointScript : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
+    private void OnTriggerEnter(Collider other)
+	{
+        if(other.CompareTag("Player"))
         {
-            collision.GetComponentInParent<PlayerController>().AddPoint();
+			other.GetComponentInParent<PlayerController>().AddPoint();
         }
     }
 }

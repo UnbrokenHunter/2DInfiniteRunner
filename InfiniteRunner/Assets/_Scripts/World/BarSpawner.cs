@@ -29,8 +29,10 @@ public class BarSpawner : MonoBehaviour
 
             GameObject bar = Instantiate(_barPrefab, _currentPos + Vector2.up * _offscreenAmount, Quaternion.identity);
             bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
+            bar.transform.position += Vector3.back;
 
-            _barList.Add(bar);
+
+			_barList.Add(bar);
 
             if(_barList.Count > 4)
             {

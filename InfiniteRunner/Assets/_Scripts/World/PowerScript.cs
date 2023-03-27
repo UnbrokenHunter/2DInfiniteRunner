@@ -5,18 +5,18 @@ using UnityEngine;
 public class PowerScript : MonoBehaviour
 {
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+    private void OnTriggerEnter(Collider other)
+	{
+        if (other.gameObject.CompareTag("Player"))
         {
-            print("Power"); 
-            collision.gameObject.GetComponentInParent<PlayerController>().AddPower();
-            Destroy(gameObject);
+            print("Power");
+			other.gameObject.GetComponentInParent<PlayerController>().AddPower();
+            Destroy(transform.parent.gameObject);
         }
         else
         {
             print("Not Player");
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 
