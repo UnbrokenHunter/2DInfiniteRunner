@@ -30,9 +30,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _jumpDecay;
     [SerializeField] private float _jumpMultiplier;
+    [SerializeField] private float _jumpCostInPower;
 
     [Header("Misc")]
     [SerializeField] private bool _isInvincable;
+    [SerializeField] private GameObject _deathMenu;
 
     [Header("Other")]
     [SerializeField] private UnityEvent OnJump;
@@ -76,9 +78,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _power -= Time.deltaTime * _powerLossMultiplier;
-
         _powerSlider.value = _power;
-
 
         _speedBonus = (_maxPower / _power);
     }
@@ -103,8 +103,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
-            print("Jump");
-            return _jumpMultiplier;
+
+            _power -= _jumpCostInPower;
+
+			return _jumpMultiplier;
         }
         
         return Mathf.Lerp(_rb.velocity.y, _maxFallSpeed, _jumpDecay);
@@ -116,8 +118,10 @@ public class PlayerController : MonoBehaviour
     {
         if (_isInvincable) return;
         print("Die");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+        
+        _deathMenu.SetActive(true);
+        Destroy(gameObject);
+	}
 
     public void AddPower()
     {
@@ -127,7 +131,7 @@ public class PlayerController : MonoBehaviour
     public void AddPoint()
     {
         _points++;
-        _pointsText.text = "Points: " + _points.ToString();
+        _pointsText.text = "Score: " + _points.ToString();
     }
 
     #endregion

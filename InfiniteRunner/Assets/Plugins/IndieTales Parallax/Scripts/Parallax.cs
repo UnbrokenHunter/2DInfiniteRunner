@@ -54,6 +54,8 @@ public class Parallax : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (subject == null) return;
+
         Vector2 newPos = startPos + travel * parallaxFactor;
         transform.position = new Vector3(xAxis ? newPos.x : startPos.x, yAxis ? newPos.y : startPos.y, zPosition);
 
