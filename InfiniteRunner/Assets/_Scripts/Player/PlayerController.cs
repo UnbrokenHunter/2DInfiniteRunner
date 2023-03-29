@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private MMF_Player _feedback;
     private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
+    private bool _jumpWasPressed = false;
     public static event Action OnDie;
 
     #endregion
@@ -64,6 +65,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (_isFrozen) return;
+        if (Input.GetKeyDown(KeyCode.Space))
+            _jumpWasPressed = true;
+
+    }
+
+    private void FixedUpdate()
     {
         if (_isFrozen) return;
 
@@ -97,13 +106,15 @@ public class PlayerController : MonoBehaviour
         float vertical = HandleJump();
 
         // Horizontal
-        _rb.velocity = new (_speed * direction.x * _speedBonus, vertical);
+        _rb.velocity = new ((_speed * direction.x * _speedBonus), vertical);
     }
 
     private float HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_jumpWasPressed)
         {
+            _jumpWasPressed = false;
+
             OnJump?.Invoke();
 
             _power -= _jumpCostInPower;
@@ -122,7 +133,10 @@ public class PlayerController : MonoBehaviour
         print("Die");
         
         OnDie?.Invoke();
-        Destroy(_powerSlider.gameObject);
+
+        if(_powerSlider != null)
+            Destroy(_powerSlider.gameObject);
+
         _deathMenu.SetActive(true);
 
         _isFrozen = true;

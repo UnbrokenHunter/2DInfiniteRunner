@@ -14,6 +14,10 @@ public class TweenUI : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private bool _onlyShowOnFirstLoad;
+
+    [Space]
+
     [SerializeField] private bool _destroyWithPlayer;
     [SerializeField] private float _destroyAfter;
 
@@ -23,6 +27,15 @@ public class TweenUI : MonoBehaviour
     {
         if(_destroyWithPlayer)
             PlayerController.OnDie += Die;
+
+        if(_onlyShowOnFirstLoad)
+        {
+            if (!GameState.Instance.IsFirstLevelLoad)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
 
         transform.localScale = Vector3.zero;
 
@@ -39,7 +52,17 @@ public class TweenUI : MonoBehaviour
             PlayerController.OnDie -= Die;
     }
 
-    private void Die() => Destroy(gameObject);
+    private void Die()
+    {
+        if (_onlyShowOnFirstLoad)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        LeanTween.moveY(_rectTransform, _yStartPosition, _tweenTime);
+        LeanTween.scale(_rectTransform, Vector3.zero, _tweenTime).destroyOnComplete = true;
+    }
 
     private IEnumerator InitialWait()
     {
@@ -57,10 +80,7 @@ public class TweenUI : MonoBehaviour
     {
         yield return new WaitForSeconds (_destroyAfter);
 
-        LeanTween.moveY(_rectTransform, _yStartPosition, _tweenTime);
-        LeanTween.scale(_rectTransform, Vector3.zero, _tweenTime);
-
-        Destroy(gameObject);
+        Die();
     }
 
 }

@@ -571,12 +571,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49da6d059e3bd246a4b768151d68d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialWait: 1.2
+  _initialWait: 0.7
   _tweenTime: 0.1
   _yStartPosition: 500
   _yEndPosition: -204
+  _onlyShowOnFirstLoad: 1
   _destroyWithPlayer: 1
-  _destroyAfter: 2
+  _destroyAfter: 1.8
 --- !u!114 &239815140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2179,8 +2180,9 @@ MonoBehaviour:
   _tweenTime: 0.1
   _yStartPosition: 500
   _yEndPosition: -73.13
+  _onlyShowOnFirstLoad: 1
   _destroyWithPlayer: 1
-  _destroyAfter: 2
+  _destroyAfter: 1.8
 --- !u!1 &1017425075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2314,7 @@ MonoBehaviour:
   _tweenTime: 0.1
   _yStartPosition: -500
   _yEndPosition: 88.6
+  _onlyShowOnFirstLoad: 0
   _destroyWithPlayer: 0
   _destroyAfter: 0
 --- !u!1 &1058466708
@@ -3468,6 +3471,7 @@ MonoBehaviour:
   _tweenTime: 0
   _yStartPosition: -500
   _yEndPosition: 0
+  _onlyShowOnFirstLoad: 0
   _destroyWithPlayer: 0
   _destroyAfter: 0
 --- !u!1 &2050310905
@@ -3681,23 +3685,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107354732066502858, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: _speed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _deathMenu
       value: 
       objectReference: {fileID: 472110211}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: _jumpDecay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _pointsText
       value: 
       objectReference: {fileID: 578069580}
+    - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: _speedBonus
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _powerSlider
       value: 
       objectReference: {fileID: 439156534}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: _maxFallSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _jumpMultiplier
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _jumpCostInPower
