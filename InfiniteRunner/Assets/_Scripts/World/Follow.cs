@@ -8,9 +8,14 @@ public class Follow : MonoBehaviour
     [SerializeField] private bool _xAxis;
     [SerializeField] private bool _yAxis;
 
-    private Vector2 _newPos;
+    private Vector3 _newPos;
 
-    private void Update()
+	private void Start()
+	{
+		_newPos = new (0, 0, transform.position.z);
+	}
+
+	private void Update()
     {
         if (_objectToFollow == null) return;
 

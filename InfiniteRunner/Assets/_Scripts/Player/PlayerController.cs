@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     #region Internal Variables
 
-    private Rigidbody2D _rb;
+    private Rigidbody _rb;
     private event Action OnFlip;
     private readonly float distance = 0.7f;
     private Vector3 direction = Vector2.right;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody>();
         _rb.velocity = new Vector2(_speed, 0);
 
         _powerSlider.maxValue = _maxPower;
@@ -85,10 +85,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new (direction.x, 0), distance, _layerMask);
+		bool hit = Physics.Raycast(transform.position, new Vector3(direction.x, 0, 0), distance, _layerMask);
 
         // Handle Flipping
-        if(hit.collider != null)
+        if(hit)
             OnFlip?.Invoke();
 
         // Jump
