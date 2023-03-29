@@ -5,16 +5,17 @@ using UnityEngine;
 public class BarSpawner : MonoBehaviour
 {
     [SerializeField] private float _chanceToSpawn = 100;
+    [SerializeField] private Vector2 _minMaxSpawnInterval;
     [SerializeField] private Vector2 _minMaxWidth;
-    [SerializeField] private float _barInterval;
     [SerializeField] private float _offscreenAmount;
 
-    [SerializeField] private GameObject _barPrefab;
+    [SerializeField] private GameObject[] _barPrefab;
 
     private List<GameObject> _barList = new ();
 
     private Vector2 _spawnPos;
     private Vector2 _currentPos;
+    private float _nextInterval = 10;
 
     private void Start() => _spawnPos = transform.position;
 
@@ -22,15 +23,16 @@ public class BarSpawner : MonoBehaviour
     {
         _currentPos = transform.position;
 
-        if (_currentPos.y - _spawnPos.y >= _barInterval)
+        if (_currentPos.y - _spawnPos.y >= _nextInterval)
         {
             if (Random.Range(0, 100) > _chanceToSpawn)
                 return;
 
-            GameObject bar = Instantiate(_barPrefab, _currentPos + Vector2.up * _offscreenAmount, Quaternion.identity);
+            Vector2 verticalPosition = _currentPos + Vector2.up * _offscreenAmount;
+
+            GameObject bar = Instantiate(_barPrefab[Random.Range(0, _barPrefab.Length)], verticalPosition, Quaternion.identity);
             bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
             bar.transform.position += Vector3.back;
-
 
 			_barList.Add(bar);
 
@@ -39,6 +41,9 @@ public class BarSpawner : MonoBehaviour
                 Destroy(_barList[0]);
                 _barList.RemoveAt(0);
             }
+
+            // Pick next interval
+            _nextInterval = Random.Range(_minMaxSpawnInterval.x, _minMaxSpawnInterval.y);
 
             _spawnPos = _currentPos;
         }

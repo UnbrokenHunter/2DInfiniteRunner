@@ -1,9 +1,8 @@
+using MoreMountains.Feedbacks;
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private bool _isInvincable;
+    [SerializeField] private bool _isFrozen = false;
     [SerializeField] private GameObject _deathMenu;
 
     [Header("Other")]
@@ -45,17 +45,17 @@ public class PlayerController : MonoBehaviour
     #region Internal Variables
 
     private Rigidbody _rb;
-    private event Action OnFlip;
-    private readonly float distance = 0.7f;
+    private MMF_Player _feedback;
+    private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
+    public static event Action OnDie;
 
     #endregion
-
-    private void Awake() => OnFlip += Flip;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _feedback = GetComponent<MMF_Player>();
         _rb.velocity = new Vector2(_speed, 0);
 
         _powerSlider.maxValue = _maxPower;
@@ -65,13 +65,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_isFrozen) return;
+
         HandlePower();
         HandleMovement();
     }
 
     private void HandlePower()
     {
-        if (_power == 0)
+        if (_power <= 0.1f)
         {
             Die();
             return;
@@ -88,8 +90,8 @@ public class PlayerController : MonoBehaviour
 		bool hit = Physics.Raycast(transform.position, new Vector3(direction.x, 0, 0), distance, _layerMask);
 
         // Handle Flipping
-        if(hit)
-            OnFlip?.Invoke();
+        if (hit)
+            direction *= -1;
 
         // Jump
         float vertical = HandleJump();
@@ -119,12 +121,18 @@ public class PlayerController : MonoBehaviour
         if (_isInvincable) return;
         print("Die");
         
+        OnDie?.Invoke();
+        Destroy(_powerSlider.gameObject);
         _deathMenu.SetActive(true);
-        Destroy(gameObject);
-	}
+
+        _isFrozen = true;
+
+    }
 
     public void AddPower()
     {
+        print("Add Power");
+        _feedback?.PlayFeedbacks();
         _power += _addPowerAmount;
     }
     
@@ -136,18 +144,13 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Events
-
-    private void Flip() => direction *= -1;
-
-    #endregion
-
     #region Gizmos
 
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
 
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (direction * distance));
     }
 
