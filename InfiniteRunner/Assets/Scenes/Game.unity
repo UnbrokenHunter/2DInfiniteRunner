@@ -3224,6 +3224,19 @@ MonoBehaviour:
   _clip: {fileID: 8300000, guid: d8ff5eb9a27d86e45b1aba87a9a784f2, type: 3}
   _volume: 0.75
   _finishClipOnLoadScene: 1
+--- !u!114 &1599565474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599565465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88addb8a893a91442af17a8d80831a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setOnEnable: 1
 --- !u!1 &1648480956
 GameObject:
   m_ObjectHideFlags: 0
