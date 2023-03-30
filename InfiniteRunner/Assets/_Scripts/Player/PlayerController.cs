@@ -3,6 +3,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _deathMenu;
 
     [Header("Other")]
-    [SerializeField] private UnityEvent OnJump;
+    [SerializeField] private UnityEvent OnJumpEvent;
     [SerializeField] private LayerMask _layerMask;
 
     #endregion
@@ -64,11 +65,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Update()
+    public void OnFire(InputValue value)
     {
         if (_isFrozen) return;
-        if (Input.GetKeyDown(KeyCode.Space))
-            _jumpWasPressed = true;
+        
+        _jumpWasPressed = value.isPressed;
 
     }
 
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             _jumpWasPressed = false;
 
-            OnJump?.Invoke();
+            OnJumpEvent?.Invoke();
 
             _power -= _jumpCostInPower;
 
