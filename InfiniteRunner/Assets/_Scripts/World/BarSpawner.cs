@@ -47,15 +47,14 @@ public class BarSpawner : MonoBehaviour
             if (_hasIncreasedDifficulty && _spawnCount >= _increaseDifficultyNumber)
             {
                 bar = Instantiate(_difficultBars[Random.Range(0, _difficultBars.Length)], verticalPosition, Quaternion.identity);
-				bar.transform.position += Vector3.right * Random.Range(_difficultMinMaxSpawnInterval.x, _difficultMinMaxSpawnInterval.y);
 			}
 			else
             {
                 bar = Instantiate(_barPrefab[Random.Range(0, _barPrefab.Length)], verticalPosition, Quaternion.identity);
-                bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
             }
 
 
+                bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
             bar.transform.position += Vector3.back;
 
 			_barList.Add(bar);
@@ -67,9 +66,13 @@ public class BarSpawner : MonoBehaviour
             }
 
             // Pick next interval
-            _nextInterval = Random.Range(_minMaxSpawnInterval.x, _minMaxSpawnInterval.y);
+            if (_hasIncreasedDifficulty && _spawnCount >= _increaseDifficultyNumber)
+                _nextInterval = Random.Range(_difficultMinMaxSpawnInterval.x, _difficultMinMaxSpawnInterval.y);
 
-            _spawnPos = _currentPos;
+            else
+				_nextInterval = Random.Range(_minMaxSpawnInterval.x, _minMaxSpawnInterval.y);
+
+			_spawnPos = _currentPos;
 
             _spawnCount++;
         }

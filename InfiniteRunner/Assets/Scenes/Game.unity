@@ -209,7 +209,7 @@ MonoBehaviour:
   - {fileID: 1929120789583040564, guid: 39a9cbd8010dfeb4e81295dc68702bf6, type: 3}
   _hasIncreasedDifficulty: 1
   _increaseDifficultyAfter: {x: 20, y: 40}
-  _difficultMinMaxSpawnInterval: {x: 7, y: 20}
+  _difficultMinMaxSpawnInterval: {x: 7, y: 25}
   _difficultBars:
   - {fileID: 1929120789583040564, guid: 8e6bb5205eff32c4eb560b386eda0226, type: 3}
   - {fileID: 1929120789583040564, guid: 39a9cbd8010dfeb4e81295dc68702bf6, type: 3}
