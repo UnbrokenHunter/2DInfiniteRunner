@@ -5,12 +5,21 @@ using UnityEngine;
 public class PowerScript : MonoBehaviour
 {
 
+    [SerializeField] private GameObject _textObject;
+    [SerializeField] private AudioPlayer _player;
+    [SerializeField] private Vector3 _offset;
+
+
     private void OnTriggerEnter(Collider other)
 	{
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Power");
-			other.gameObject.GetComponentInParent<PlayerController>().AddPower();
+            GameObject rect = Instantiate(_textObject);
+            rect.transform.position = transform.position + _offset;
+
+            _player.PlayClip();
+
+            other.gameObject.GetComponentInParent<PlayerController>().AddPower();
             Destroy(transform.parent.gameObject);
         }
         else

@@ -1,9 +1,9 @@
+using MoreMountains.Feedbacks;
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private bool _isInvincable;
+    [SerializeField] private bool _isFrozen = false;
+    [SerializeField] private MMF_Player _deathFeedback;
     [SerializeField] private GameObject _deathMenu;
 
     [Header("Other")]
-    [SerializeField] private UnityEvent OnJump;
+    [SerializeField] private UnityEvent OnJumpEvent;
     [SerializeField] private LayerMask _layerMask;
 
     #endregion
@@ -45,13 +47,13 @@ public class PlayerController : MonoBehaviour
     #region Internal Variables
 
     private Rigidbody _rb;
-    private event Action OnFlip;
-    private readonly float distance = 0.7f;
+    private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
+    private bool _jumpWasPressed = false;
+    public bool IsDead { get => _isFrozen; }
+    public static event Action OnDie;
 
     #endregion
-
-    private void Awake() => OnFlip += Flip;
 
     private void Start()
     {
@@ -63,15 +65,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Update()
+    public void OnFire(InputValue value)
     {
+        if (_isFrozen) return;
+        
+        _jumpWasPressed = value.isPressed;
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isFrozen) return;
+
         HandlePower();
         HandleMovement();
     }
 
     private void HandlePower()
     {
-        if (_power == 0)
+        if (_power <= 0.1f)
         {
             Die();
             return;
@@ -88,21 +100,23 @@ public class PlayerController : MonoBehaviour
 		bool hit = Physics.Raycast(transform.position, new Vector3(direction.x, 0, 0), distance, _layerMask);
 
         // Handle Flipping
-        if(hit)
-            OnFlip?.Invoke();
+        if (hit)
+            direction *= -1;
 
         // Jump
         float vertical = HandleJump();
 
         // Horizontal
-        _rb.velocity = new (_speed * direction.x * _speedBonus, vertical);
+        _rb.velocity = new ((_speed * direction.x * _speedBonus), vertical);
     }
 
     private float HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_jumpWasPressed)
         {
-            OnJump?.Invoke();
+            _jumpWasPressed = false;
+
+            OnJumpEvent?.Invoke();
 
             _power -= _jumpCostInPower;
 
@@ -119,26 +133,33 @@ public class PlayerController : MonoBehaviour
         if (_isInvincable) return;
         print("Die");
         
-        _deathMenu.SetActive(true);
-        Destroy(gameObject);
-	}
+        OnDie?.Invoke();
+        _deathFeedback?.PlayFeedbacks();
+
+        if (_powerSlider != null)
+            Destroy(_powerSlider.gameObject);
+
+		HighScore.Instance.CheckScore(_points);
+
+		_deathMenu.SetActive(true);
+
+        _isFrozen = true;
+
+    }
 
     public void AddPower()
     {
+        print("Add Power");
         _power += _addPowerAmount;
+        if (_power > _maxPower)
+            _power = _maxPower;
     }
     
     public void AddPoint()
     {
         _points++;
-        _pointsText.text = "Score: " + _points.ToString();
+		_pointsText.text = "Score: " + _points.ToString();
     }
-
-    #endregion
-
-    #region Events
-
-    private void Flip() => direction *= -1;
 
     #endregion
 
@@ -148,6 +169,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!Application.isPlaying) return;
 
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (direction * distance));
     }
 
