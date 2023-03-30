@@ -7,6 +7,9 @@ public class PointScript : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnPoint;
 
+    [SerializeField] private Vector3 _offset;
+    [SerializeField] private GameObject _textObject;
+
     private void OnTriggerEnter(Collider other)
 	{
         if(other.CompareTag("Player"))
@@ -16,7 +19,10 @@ public class PointScript : MonoBehaviour
 
             OnPoint?.Invoke();
 
-            other.GetComponentInParent<PlayerController>().AddPoint();
+			GameObject text = Instantiate(_textObject);
+			text.transform.position = transform.position + _offset;
+
+			other.GetComponentInParent<PlayerController>().AddPoint();
         }
     }
 }

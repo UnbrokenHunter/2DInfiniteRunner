@@ -206,6 +206,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _offset: {x: 0, y: 1, z: -3}
+  _textObject: {fileID: 7606728239260592306, guid: 355375da46ea88f4f802b591c538f27e, type: 3}
 --- !u!64 &6926658600711502678
 MeshCollider:
   m_ObjectHideFlags: 0
