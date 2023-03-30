@@ -134,7 +134,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textObject: {fileID: 7606728239260592306, guid: fce3e3375dd4fc34d9f9c7042f56d048, type: 3}
+  _player: {fileID: 2697702128510355610}
   _offset: {x: 0, y: 1, z: -3}
+--- !u!114 &2697702128510355610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177960170786913031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 15f4cfe398c0e474e9bc9629e003ac4c, type: 3}
+  _volume: 0.6
+  _finishClipOnLoadScene: 1
 --- !u!114 &6122686608564648413
 MonoBehaviour:
   m_ObjectHideFlags: 0

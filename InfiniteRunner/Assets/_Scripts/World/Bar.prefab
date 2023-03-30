@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 83310380180218533}
   - component: {fileID: 3065813973261539176}
   - component: {fileID: 6926658600711502678}
+  - component: {fileID: 6747620743518426254}
   m_Layer: 0
   m_Name: Middle
   m_TagString: Untagged
@@ -190,6 +191,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d704ea5c8424a794bb05d89efa4c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6747620743518426254}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!64 &6926658600711502678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -204,6 +220,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6747620743518426254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947373091161146076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: b803909bee60f19448750b657dfe8264, type: 3}
+  _finishClipOnLoadScene: 0
 --- !u!1 &7899457837322980742
 GameObject:
   m_ObjectHideFlags: 0

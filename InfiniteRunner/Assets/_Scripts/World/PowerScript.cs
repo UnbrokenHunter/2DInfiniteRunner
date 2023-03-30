@@ -6,6 +6,7 @@ public class PowerScript : MonoBehaviour
 {
 
     [SerializeField] private GameObject _textObject;
+    [SerializeField] private AudioPlayer _player;
     [SerializeField] private Vector3 _offset;
 
 
@@ -13,10 +14,10 @@ public class PowerScript : MonoBehaviour
 	{
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Power");
-
             GameObject rect = Instantiate(_textObject);
             rect.transform.position = transform.position + _offset;
+
+            _player.PlayClip();
 
             other.gameObject.GetComponentInParent<PlayerController>().AddPower();
             Destroy(transform.parent.gameObject);

@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private bool _isInvincable;
     [SerializeField] private bool _isFrozen = false;
+    [SerializeField] private MMF_Player _deathFeedback;
     [SerializeField] private GameObject _deathMenu;
 
     [Header("Other")]
@@ -45,10 +46,10 @@ public class PlayerController : MonoBehaviour
     #region Internal Variables
 
     private Rigidbody _rb;
-    private MMF_Player _feedback;
     private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
     private bool _jumpWasPressed = false;
+    public bool IsDead { get => _isFrozen; }
     public static event Action OnDie;
 
     #endregion
@@ -56,7 +57,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _feedback = GetComponent<MMF_Player>();
         _rb.velocity = new Vector2(_speed, 0);
 
         _powerSlider.maxValue = _maxPower;
@@ -133,8 +133,9 @@ public class PlayerController : MonoBehaviour
         print("Die");
         
         OnDie?.Invoke();
+        _deathFeedback?.PlayFeedbacks();
 
-        if(_powerSlider != null)
+        if (_powerSlider != null)
             Destroy(_powerSlider.gameObject);
 
         _deathMenu.SetActive(true);
@@ -146,8 +147,9 @@ public class PlayerController : MonoBehaviour
     public void AddPower()
     {
         print("Add Power");
-        _feedback?.PlayFeedbacks();
         _power += _addPowerAmount;
+        if (_power > _maxPower)
+            _power = _maxPower;
     }
     
     public void AddPoint()
