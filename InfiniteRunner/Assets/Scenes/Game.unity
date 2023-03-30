@@ -204,9 +204,15 @@ MonoBehaviour:
   _minMaxWidth: {x: -5, y: 5}
   _offscreenAmount: 30
   _barPrefab:
-  - {fileID: 1929120789583040564, guid: 8e6bb5205eff32c4eb560b386eda0226, type: 3}
+  - {fileID: 1929120789583040564, guid: 6624af1b2e6eb2b44b9e097974e7f811, type: 3}
   - {fileID: 1929120789583040564, guid: 546042a38b2b4914597a161695c79048, type: 3}
   - {fileID: 1929120789583040564, guid: 39a9cbd8010dfeb4e81295dc68702bf6, type: 3}
+  _hasIncreasedDifficulty: 1
+  _increaseDifficultyAfter: {x: 20, y: 40}
+  _difficultBars:
+  - {fileID: 1929120789583040564, guid: 8e6bb5205eff32c4eb560b386eda0226, type: 3}
+  - {fileID: 1929120789583040564, guid: 39a9cbd8010dfeb4e81295dc68702bf6, type: 3}
+  - {fileID: 1929120789583040564, guid: 546042a38b2b4914597a161695c79048, type: 3}
 --- !u!1 &83823346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3426,9 @@ MonoBehaviour:
   _offscreenAmount: 30
   _barPrefab:
   - {fileID: 4366230021228773596, guid: 3637ff1283dab38459baadf649c16a6a, type: 3}
+  _hasIncreasedDifficulty: 0
+  _increaseDifficultyAfter: {x: 0, y: 0}
+  _difficultBars: []
 --- !u!1 &1493691559
 GameObject:
   m_ObjectHideFlags: 0
