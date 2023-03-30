@@ -13,8 +13,9 @@ public class BarSpawner : MonoBehaviour
 
     [SerializeField] private bool _hasIncreasedDifficulty;
     [SerializeField] private Vector2 _increaseDifficultyAfter;
+	[SerializeField] private Vector2 _difficultMinMaxSpawnInterval;
 
-    [SerializeField] private GameObject[] _difficultBars;
+	[SerializeField] private GameObject[] _difficultBars;
 
     private List<GameObject> _barList = new ();
 
@@ -46,15 +47,15 @@ public class BarSpawner : MonoBehaviour
             if (_hasIncreasedDifficulty && _spawnCount >= _increaseDifficultyNumber)
             {
                 bar = Instantiate(_difficultBars[Random.Range(0, _difficultBars.Length)], verticalPosition, Quaternion.identity);
-
-            }
-            else
+				bar.transform.position += Vector3.right * Random.Range(_difficultMinMaxSpawnInterval.x, _difficultMinMaxSpawnInterval.y);
+			}
+			else
             {
                 bar = Instantiate(_barPrefab[Random.Range(0, _barPrefab.Length)], verticalPosition, Quaternion.identity);
+                bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
             }
 
 
-            bar.transform.position += Vector3.right * Random.Range(_minMaxWidth.x, _minMaxWidth.y);
             bar.transform.position += Vector3.back;
 
 			_barList.Add(bar);
