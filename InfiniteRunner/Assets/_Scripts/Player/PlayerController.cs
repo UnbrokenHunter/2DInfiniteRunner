@@ -139,7 +139,9 @@ public class PlayerController : MonoBehaviour
         if (_powerSlider != null)
             Destroy(_powerSlider.gameObject);
 
-        _deathMenu.SetActive(true);
+		HighScore.Instance.CheckScore(_points);
+
+		_deathMenu.SetActive(true);
 
         _isFrozen = true;
 
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour
     public void AddPoint()
     {
         _points++;
-        _pointsText.text = "Score: " + _points.ToString();
+		_pointsText.text = "Score: " + _points.ToString();
     }
 
     #endregion
