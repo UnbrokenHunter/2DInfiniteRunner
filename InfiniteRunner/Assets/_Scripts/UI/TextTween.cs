@@ -30,7 +30,7 @@ public class TextTween : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(_waitTime);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 }
