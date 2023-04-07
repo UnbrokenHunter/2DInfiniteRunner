@@ -38,7 +38,10 @@ public class BarSpawner : MonoBehaviour
         if (_currentPos.y - _spawnPos.y >= _nextInterval)
         {
             if (Random.Range(0, 100) > _chanceToSpawn)
+            {
+                _spawnPos = _currentPos;
                 return;
+            }
 
             GameObject bar;
             Vector2 verticalPosition = _currentPos + Vector2.up * _offscreenAmount;

@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 
     #region Inspector Variables
 
+    [Header("Health")]
+    [SerializeField] private int _health = 1;
+    [SerializeField] private GameObject _heartUI;
+    [SerializeField] private GameObject _heartContainer;
+
     [Header("Points")]
     [SerializeField] private int _points;
     [SerializeField] private TMP_Text _pointsText;
@@ -128,13 +133,24 @@ public class PlayerController : MonoBehaviour
 
     #region Effects
 
-    public void Die()
+    public bool Die()
     {
-        if (_isInvincable) return;
+        if (_isInvincable) return true;
+
+        if(_health > 1)
+        {
+            _health--; 
+            print("Health: " + _health);
+
+            Destroy(_heartContainer.transform.GetChild(_heartContainer.transform.childCount - 1).gameObject);
+
+            return false;
+        }
+
         print("Die");
-        
+
+        _deathFeedback.PlayFeedbacks();
         OnDie?.Invoke();
-        _deathFeedback?.PlayFeedbacks();
 
         if (_powerSlider != null)
             Destroy(_powerSlider.gameObject);
@@ -144,6 +160,8 @@ public class PlayerController : MonoBehaviour
 		_deathMenu.SetActive(true);
 
         _isFrozen = true;
+
+        return true;
 
     }
 
@@ -155,6 +173,15 @@ public class PlayerController : MonoBehaviour
             _power = _maxPower;
     }
     
+    public void AddHealth()
+    {
+        print("Add Health");
+
+        Instantiate(_heartUI, _heartContainer.transform);
+
+        _health++;
+    }
+
     public void AddPoint()
     {
         _points++;
