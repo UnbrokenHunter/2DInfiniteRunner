@@ -3,7 +3,7 @@ using UnityEngine;
 public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] private AudioClip _clip;
-    [SerializeField, Range(0, 1f)] private float _volume = 0.75f;
+    [SerializeField, Range(0, 1f)] private float _volume = 0.45f;
 
     [Space]
 

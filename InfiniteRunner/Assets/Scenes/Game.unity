@@ -867,7 +867,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -875,14 +875,23 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0037384033
+        time: 0.00554657
         value: 0.25438297
+        inSlope: -2.2097058
+        outSlope: -2.2097058
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1277963
+      - serializedVersion: 3
+        time: 0.42409986
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1283,7 +1292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 300.00003
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1766,7 +1775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -50}
+  m_AnchoredPosition: {x: 300.00003, y: -50}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &551550401
@@ -1901,7 +1910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -143.14684}
+  m_AnchoredPosition: {x: 300.00003, y: -143.14684}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &578069580
@@ -3421,7 +3430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 300.00003
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3749,7 +3758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: b803909bee60f19448750b657dfe8264, type: 3}
-  _volume: 0.75
+  _volume: 0.2
   _finishClipOnLoadScene: 0
 --- !u!1 &1956049791
 GameObject:
@@ -3950,7 +3959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -200.29367}
+  m_AnchoredPosition: {x: 300.00003, y: -200.29367}
   m_SizeDelta: {x: 198.7, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1993999135
@@ -4347,6 +4356,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 83823347}
     m_Modifications:
+    - target: {fileID: 8148604795374980697, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: _volume
+      value: 0.586
+      objectReference: {fileID: 0}
     - target: {fileID: 9107354731098227204, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: m_Enabled
       value: 1

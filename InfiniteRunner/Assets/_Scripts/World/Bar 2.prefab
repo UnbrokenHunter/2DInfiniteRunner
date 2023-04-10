@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
-  _volume: 0.75
+  _volume: 0.4
   _finishClipOnLoadScene: 1
 --- !u!1 &4947373091161146076
 GameObject:
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: b803909bee60f19448750b657dfe8264, type: 3}
-  _volume: 0.75
+  _volume: 0.1
   _finishClipOnLoadScene: 0
 --- !u!1 &7899457837322980742
 GameObject:
@@ -380,5 +380,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
-  _volume: 0.75
+  _volume: 0.4
   _finishClipOnLoadScene: 1

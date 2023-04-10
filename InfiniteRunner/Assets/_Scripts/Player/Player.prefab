@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: 79ab046d6c4596e4ca639c64259d37cd, type: 3}
-  _volume: 0.75
+  _volume: 0.25
   _finishClipOnLoadScene: 1
 --- !u!1 &6125911855467665083
 GameObject:
@@ -631,6 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a89bc447972db4e8076a7f10f8249c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 1
+  _heartUI: {fileID: 0}
+  _heartContainer: {fileID: 0}
   _points: 0
   _pointsText: {fileID: 0}
   _powerLossMultiplier: 2

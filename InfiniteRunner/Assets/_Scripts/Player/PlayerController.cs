@@ -53,34 +53,32 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
     private TrailRenderer _trailRend;
-    private SpriteRenderer _spriteRend;
+    private MeshRenderer _spriteRend;
     private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
     private bool _jumpWasPressed = false;
     public bool IsDead { get => _isFrozen; }
     public static event Action OnDie;
     private bool _visibleMode = true;
+    private bool _isPowerSliderNotNull;
+
     #endregion
 
     private void Start()
     {
+        _isPowerSliderNotNull = _powerSlider != null;
         _rb = GetComponent<Rigidbody>();
         _rb.velocity = new Vector2(_speed, 0);
 
         _powerSlider.maxValue = _maxPower;
         _powerSlider.minValue = 0;
         _trailRend = GetComponentInChildren<TrailRenderer>();
-        _spriteRend = GetComponentInChildren<SpriteRenderer>();
+        _spriteRend = GetComponentInChildren<MeshRenderer>();
     }
-    public void ToggleMode(){
-        if (UnityEngine.Input.GetKeyUp(KeyCode.T)){
-            if (_visibleMode == true){
-                _visibleMode = false;
-            }
-            else{
-                _visibleMode = true;
-            }
-        }
+    public void OnToggle()
+    {
+        _visibleMode = _visibleMode != true;
+        
         if (_visibleMode){
             _trailRend.enabled = false;
             _spriteRend.enabled = true;
@@ -101,7 +99,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isFrozen) return;
-        ToggleMode();
         HandlePower();
         HandleMovement();
     }
@@ -140,15 +137,11 @@ public class PlayerController : MonoBehaviour
         if (_jumpWasPressed)
         {
             _jumpWasPressed = false;
-            _trailRend.enabled = true;
             OnJumpEvent?.Invoke();
 
             _power -= _jumpCostInPower;
 
 			return _jumpMultiplier;
-        }
-        if(Time.time % 3 == 0){
-            _trailRend.enabled = false;
         }
         return Mathf.Lerp(_rb.velocity.y, _maxFallSpeed, _jumpDecay);
     }
@@ -174,7 +167,7 @@ public class PlayerController : MonoBehaviour
         _deathFeedback.PlayFeedbacks();
         OnDie?.Invoke();
 
-        if (_powerSlider != null)
+        if (_isPowerSliderNotNull)
             Destroy(_powerSlider.gameObject);
 
 		HighScore.Instance.CheckScore(_points);

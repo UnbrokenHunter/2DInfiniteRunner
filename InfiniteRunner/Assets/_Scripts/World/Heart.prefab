@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: f0d060ec462b5b348bdbc75beb62b581, type: 3}
-  _volume: 0.6
+  _volume: 0.488
   _finishClipOnLoadScene: 1
 --- !u!114 &6122686608564648413
 MonoBehaviour:
