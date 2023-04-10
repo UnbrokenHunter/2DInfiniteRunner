@@ -52,12 +52,14 @@ public class PlayerController : MonoBehaviour
     #region Internal Variables
 
     private Rigidbody _rb;
+    private TrailRenderer _trailRend;
+    private SpriteRenderer _spriteRend;
     private readonly float distance = 0.8f;
     private Vector3 direction = Vector2.right;
     private bool _jumpWasPressed = false;
     public bool IsDead { get => _isFrozen; }
     public static event Action OnDie;
-
+    private bool _visibleMode = true;
     #endregion
 
     private void Start()
@@ -67,9 +69,27 @@ public class PlayerController : MonoBehaviour
 
         _powerSlider.maxValue = _maxPower;
         _powerSlider.minValue = 0;
-
+        _trailRend = GetComponentInChildren<TrailRenderer>();
+        _spriteRend = GetComponentInChildren<SpriteRenderer>();
     }
-
+    public void ToggleMode(){
+        if (UnityEngine.Input.GetKeyUp(KeyCode.T)){
+            if (_visibleMode == true){
+                _visibleMode = false;
+            }
+            else{
+                _visibleMode = true;
+            }
+        }
+        if (_visibleMode){
+            _trailRend.enabled = false;
+            _spriteRend.enabled = true;
+        }
+        else{
+            // _trailRend.enabled = true;
+            _spriteRend.enabled = false;
+        }
+    }
     public void OnFire(InputValue value)
     {
         if (_isFrozen) return;
@@ -81,7 +101,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isFrozen) return;
-
+        ToggleMode();
         HandlePower();
         HandleMovement();
     }
@@ -120,14 +140,16 @@ public class PlayerController : MonoBehaviour
         if (_jumpWasPressed)
         {
             _jumpWasPressed = false;
-
+            _trailRend.enabled = true;
             OnJumpEvent?.Invoke();
 
             _power -= _jumpCostInPower;
 
 			return _jumpMultiplier;
         }
-        
+        if(Time.time % 3 == 0){
+            _trailRend.enabled = false;
+        }
         return Mathf.Lerp(_rb.velocity.y, _maxFallSpeed, _jumpDecay);
     }
 
