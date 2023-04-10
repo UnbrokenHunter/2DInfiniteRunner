@@ -37,6 +37,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""34be48b4-bcd4-4cc3-b3ef-48c33798968f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -103,6 +112,17 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50c3ca4d-4768-490c-88f0-1ca6bb8d3a83"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -702,6 +722,7 @@ namespace UnityEngine.InputSystem
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Toggle = m_Player.FindAction("Toggle", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -776,11 +797,13 @@ namespace UnityEngine.InputSystem
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_Toggle;
         public struct PlayerActions
         {
             private @Input m_Wrapper;
             public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @Toggle => m_Wrapper.m_Player_Toggle;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -793,6 +816,9 @@ namespace UnityEngine.InputSystem
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Toggle.started += instance.OnToggle;
+                @Toggle.performed += instance.OnToggle;
+                @Toggle.canceled += instance.OnToggle;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -800,6 +826,9 @@ namespace UnityEngine.InputSystem
                 @Fire.started -= instance.OnFire;
                 @Fire.performed -= instance.OnFire;
                 @Fire.canceled -= instance.OnFire;
+                @Toggle.started -= instance.OnToggle;
+                @Toggle.performed -= instance.OnToggle;
+                @Toggle.canceled -= instance.OnToggle;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -983,6 +1012,7 @@ namespace UnityEngine.InputSystem
         public interface IPlayerActions
         {
             void OnFire(InputAction.CallbackContext context);
+            void OnToggle(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
