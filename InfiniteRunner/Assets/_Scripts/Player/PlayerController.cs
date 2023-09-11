@@ -148,10 +148,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void AddPower()
+    public void AddPower(float amount)
     {
         print("Add Power");
-        _power += _addPowerAmount;
+        _power += amount;
         if (_power > _maxPower)
             _power = _maxPower;
     }
