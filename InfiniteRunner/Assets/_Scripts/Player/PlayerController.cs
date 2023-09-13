@@ -1,5 +1,7 @@
 using MoreMountains.Feedbacks;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float _speed;
-    [SerializeField] private float _maxFallSpeed;
+    [SerializeField] public float _maxFallSpeed;
     [SerializeField] private float _jumpDecay;
     [SerializeField] private float _jumpMultiplier;
     [SerializeField] private float _jumpCostInPower;
@@ -48,11 +50,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnityEvent OnJumpEvent;
     [SerializeField] private LayerMask _layerMask;
 
-    #endregion
+	#endregion
 
-    #region Internal Variables
+	#region Getters/Setters
 
-    private Rigidbody _rb;
+	#endregion
+
+	#region Internal Variables
+
+	private Rigidbody _rb;
     private TrailRenderer _trailRend;
     private MeshRenderer _spriteRend;
     private readonly float distance = 0.8f;
@@ -151,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
     public bool Die()
     {
-        if (_isInvincable) return true;
+        if (_isInvincable) return false;
 
         if(_health > 1)
         {
@@ -208,11 +214,34 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-    #endregion
+    public void StartBonus(float speed, float time)
+    {
+		StartCoroutine(InvincableTime(speed, time));
+	}
 
-    #region Gizmos
+	public IEnumerator InvincableTime(float speed, float time)
+	{
+		_isInvincable = true;
+		_maxFallSpeed += speed;
 
-    private void OnDrawGizmos()
+		yield return new WaitForSeconds(time);
+
+		print("Lightning Bonus Over");
+
+		_maxFallSpeed -= speed;
+
+        yield return new WaitForSeconds(0.5f);
+
+		_isInvincable = false;
+
+	}
+
+
+	#endregion
+
+	#region Gizmos
+
+	private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
 

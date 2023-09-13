@@ -12,7 +12,9 @@ public class Bar : MonoBehaviour
         {
             if (!collision.gameObject.GetComponentInParent<PlayerController>().Die())
             {
-                Instantiate(_destroyParticles, transform.position, Quaternion.identity).GetComponent<ParticleSystem>().DestroyAudioOnFinish();
+                collision.gameObject.GetComponentInParent<PlayerController>().AddPoint();
+
+				Instantiate(_destroyParticles, transform.position, Quaternion.identity).GetComponent<ParticleSystem>().DestroyAudioOnFinish();
                 GetComponent<AudioPlayer>().PlayClip();
 
                 Destroy(transform.parent.gameObject);

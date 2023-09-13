@@ -290,12 +290,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68546bc831b6c4144a2f89021d83b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceToSpawn: 5
+  _chanceToSpawn: 20
   _minMaxSpawnInterval: {x: 50, y: 100}
   _minMaxWidth: {x: -5, y: 5}
   _offscreenAmount: 30
   _barPrefab:
   - {fileID: 4366230021228773596, guid: 00cbc899c37e97e4f9b429fa9b296c7a, type: 3}
+  - {fileID: 4366230021228773596, guid: 793b3ae4f90bc3c4db56a47e01b0f84c, type: 3}
   _hasIncreasedDifficulty: 0
   _increaseDifficultyAfter: {x: 0, y: 0}
   _difficultMinMaxSpawnInterval: {x: 0, y: 0}
