@@ -19,8 +19,9 @@ public class PlayerController : MonoBehaviour
     [Header("Points")]
     [SerializeField] private int _points;
     [SerializeField] private TMP_Text _pointsText;
+    [SerializeField] private TMP_Text _pointsText2;
 
-    [Header("Power Variables")]
+	[Header("Power Variables")]
     [SerializeField] private float _powerLossMultiplier;
     [SerializeField] private float _addPowerAmount = 10;
 
@@ -180,10 +181,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void AddPower()
+    public void AddPower(float amt)
     {
         print("Add Power");
-        _power += _addPowerAmount;
+        _power += amt;
         if (_power > _maxPower)
             _power = _maxPower;
     }
@@ -201,7 +202,9 @@ public class PlayerController : MonoBehaviour
     {
         _points++;
 		_pointsText.text = "Score: " + _points.ToString();
-    }
+		_pointsText2.text = _points.ToString();
+
+	}
 
     #endregion
 

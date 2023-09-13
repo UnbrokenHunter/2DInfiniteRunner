@@ -9,6 +9,7 @@ public class PowerScript : MonoBehaviour
     [SerializeField] private AudioPlayer _player;
     [SerializeField] private Vector3 _offset;
 
+    [SerializeField] private float _powerAmt = 50;
 
     private void OnTriggerEnter(Collider other)
 	{
@@ -16,10 +17,12 @@ public class PowerScript : MonoBehaviour
         {
             GameObject rect = Instantiate(_textObject);
             rect.transform.position = transform.position + _offset;
+            rect.GetComponentInChildren<TextMesh>().text = "+" + _powerAmt + " Power";
+
 
             _player.PlayClip();
 
-            other.gameObject.GetComponentInParent<PlayerController>().AddPower();
+            other.gameObject.GetComponentInParent<PlayerController>().AddPower(_powerAmt);
             Destroy(transform.parent.gameObject);
         }
         else
