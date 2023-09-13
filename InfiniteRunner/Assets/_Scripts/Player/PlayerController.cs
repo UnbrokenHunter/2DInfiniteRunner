@@ -158,6 +158,8 @@ public class PlayerController : MonoBehaviour
             _health--; 
             print("Health: " + _health);
 
+            AddPower(100f);
+
             Destroy(_heartContainer.transform.GetChild(_heartContainer.transform.childCount - 1).gameObject);
 
             return false;
