@@ -51,11 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
 
 	#endregion
-
-	#region Getters/Setters
-
-	#endregion
-
+    
 	#region Internal Variables
 
 	private Rigidbody _rb;
