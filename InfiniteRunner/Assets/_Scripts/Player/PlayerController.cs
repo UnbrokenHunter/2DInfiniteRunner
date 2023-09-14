@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private MMF_Player _deathFeedback;
     [SerializeField] private GameObject _deathMenu;
 
+    [Space]
+
+    [SerializeField] private TrailRenderer _mainTrail;
+    [SerializeField] private TrailRenderer _powerTrail;
+
     [Header("Other")]
     [SerializeField] private UnityEvent OnJumpEvent;
     [SerializeField] private LayerMask _layerMask;
@@ -220,11 +225,17 @@ public class PlayerController : MonoBehaviour
 		_isInvincable = true;
 		_maxFallSpeed += speed;
 
+        _mainTrail.gameObject.SetActive(false);
+        _powerTrail.gameObject.SetActive(true);
+
 		yield return new WaitForSeconds(time);
 
 		print("Lightning Bonus Over");
 
 		_maxFallSpeed -= speed;
+
+        _mainTrail.gameObject.SetActive(true);
+        _powerTrail.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
 

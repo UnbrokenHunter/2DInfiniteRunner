@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
@@ -7,40 +8,93 @@ public class AudioPlayer : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private bool _playOnStart;
     [SerializeField] private bool _finishClipOnLoadScene;
+    [SerializeField] private bool _dontDestroyOnLoad = false;
 
-    public void PlayClip()
+    [Space]
+
+    [SerializeField] private AudioClip _nextClip;
+    [SerializeField] private bool _loopClipTwo;
+    private bool isLooping = false;
+
+	private void Start() { if (_playOnStart) PlayClip(); }
+
+	public void PlayClip()
     {
-        if (_finishClipOnLoadScene)
+        PlayClip(_clip);
+    }
+
+	public void PlayClip(AudioClip clip)
+    {
+        if (_finishClipOnLoadScene || _dontDestroyOnLoad)
         {
-            PlayClipDontDestroyOnLoad();
+            PlayClipDontDestroyOnLoad(clip);
         }
         else
         {
-            PlayClipDestroyOnLoad();
+            PlayClipDestroyOnLoad(clip);
+        }
+
+        if (_nextClip != null && !isLooping)
+        {
+            StartCoroutine(WaitForNextAudio(_nextClip));
         }
     }
 
-    private void PlayClipDestroyOnLoad()
+    private IEnumerator WaitForNextAudio(AudioClip clip)
+    {
+        yield return new WaitForSecondsRealtime(_clip.length);
+
+        PlayClip(clip);
+    }
+
+    private void PlayClipDestroyOnLoad(AudioClip clip)
     {
         TryGetComponent(out AudioSource source);
         if(source == null)
             source = gameObject.AddComponent<AudioSource>();
 
         if(source.isPlaying) source.Stop();
-        source.clip = _clip;
+        source.clip = clip;
         source.volume = _volume;
         source.Play();
     }
 
-    private void PlayClipDontDestroyOnLoad()
+    private void PlayClipDontDestroyOnLoad(AudioClip clip)
     {
-        AudioSource audioSource = Instantiate(new GameObject()).AddComponent<AudioSource>();
-        DontDestroyOnLoad(audioSource);
+        AudioSource source;
 
-        audioSource.clip = _clip;
-        audioSource.volume = _volume;
-        audioSource.Play();
-        StartCoroutine(audioSource.DestroyAudioOnFinish());
+		if (_dontDestroyOnLoad)
+        {
+		    TryGetComponent(out source);
+			if (source == null)
+				source = gameObject.AddComponent<AudioSource>();
+		}
+		else
+        {
+			source = Instantiate(new GameObject(name:Random.Range(0, 100).ToString()).AddComponent<AudioSource>());
+        }
+
+        DontDestroyOnLoad(source);
+
+		source.clip = clip;
+        source.volume = _volume;
+        source.Play();
+
+        if (!_dontDestroyOnLoad)
+        {
+            StartCoroutine(source.DestroyAudioOnFinish());
+        }
+
+        if (_loopClipTwo)
+        {
+            if (clip == _nextClip)
+            {
+                source.loop = true;
+                isLooping = true;
+
+			}
+        }
     }
 }

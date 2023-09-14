@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a9f06b6ce9bc6468b196650ed85215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyOnContact: 1
   _textObject: {fileID: 7606728239260592306, guid: fce3e3375dd4fc34d9f9c7042f56d048, type: 3}
   _player: {fileID: 2697702128510355610}
   _offset: {x: 0, y: 1, z: -3}
@@ -150,7 +151,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: 15f4cfe398c0e474e9bc9629e003ac4c, type: 3}
   _volume: 0.1
+  _playOnStart: 0
   _finishClipOnLoadScene: 1
+  _dontDestroyOnLoad: 0
+  _nextClip: {fileID: 0}
+  _loopClipTwo: 0
 --- !u!114 &6122686608564648413
 MonoBehaviour:
   m_ObjectHideFlags: 0

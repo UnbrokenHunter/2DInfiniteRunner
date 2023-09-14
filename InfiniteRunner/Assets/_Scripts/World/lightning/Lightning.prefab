@@ -161,7 +161,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: f0d060ec462b5b348bdbc75beb62b581, type: 3}
   _volume: 0.488
+  _playOnStart: 0
   _finishClipOnLoadScene: 1
+  _dontDestroyOnLoad: 0
+  _nextClip: {fileID: 0}
+  _loopClipTwo: 0
 --- !u!114 &6122686608564648413
 MonoBehaviour:
   m_ObjectHideFlags: 0

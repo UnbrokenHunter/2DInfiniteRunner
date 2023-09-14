@@ -4,15 +4,25 @@ using UnityEngine;
 
 public static class Extentions 
 {
-    public static IEnumerator DestroyAudioOnFinish(this AudioSource source)
-    {
-        yield return new WaitForSeconds(source.clip.length);
+	public static IEnumerator DestroyAudioOnFinish(this AudioSource source)
+	{
+		if (source.clip != null)
+		{
+			float timeRemaining = source.clip.length - source.time;
+			Debug.Log("Destroy Object in " + timeRemaining + " seconds Object: " + source.gameObject.name);
 
-        Debug.Log("Des");
-        Object.Destroy(source.gameObject);
-    }
+			yield return new WaitForSeconds(timeRemaining);
 
-    public static IEnumerator DestroyAudioOnFinish(this ParticleSystem particle)
+			Debug.Log("Object Destroyed");
+			Object.Destroy(source.gameObject);
+		}
+		else
+		{
+			Debug.LogWarning("AudioSource does not have a clip!");
+		}
+	}
+
+	public static IEnumerator DestroyParticleOnFinish(this ParticleSystem particle)
     {
         yield return new WaitForSeconds(particle.emission.GetBurst(0).repeatInterval);
 
