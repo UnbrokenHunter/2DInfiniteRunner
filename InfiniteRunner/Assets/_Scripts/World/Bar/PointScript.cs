@@ -17,6 +17,6 @@ public class PointScript : AbilityScript
 
     protected override string TextMesh()
     {
-        return "+1 Point";
+        return "+50m";
     }
 }

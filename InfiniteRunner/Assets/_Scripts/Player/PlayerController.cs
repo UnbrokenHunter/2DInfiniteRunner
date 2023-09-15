@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Points")]
     [SerializeField] private int _points;
+	[SerializeField] private int distanceScore = 0;
     [SerializeField] private TMP_Text _pointsText;
     [SerializeField] private TMP_Text _pointsText2;
 
@@ -109,7 +110,8 @@ public class PlayerController : MonoBehaviour
         if (_isFrozen) return;
         HandlePower();
         HandleMovement();
-    }
+        HandlePoints();
+	}
 
     private void HandlePower()
     {
@@ -140,7 +142,18 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = new ((_speed * direction.x * _speedBonus), vertical);
     }
 
-    private float HandleJump()
+    private void HandlePoints()
+    {
+		distanceScore = _points * 50;
+		distanceScore += (int) transform.position.y;
+
+		var text = distanceScore + "m";
+
+		_pointsText.text = text;
+		_pointsText2.text = text;
+	}
+
+	private float HandleJump()
     {
         if (_jumpWasPressed)
         {
@@ -180,7 +193,7 @@ public class PlayerController : MonoBehaviour
         if (_isPowerSliderNotNull)
             Destroy(_powerSlider.gameObject);
 
-		HighScore.Instance.CheckScore(_points);
+		HighScore.Instance.CheckScore(distanceScore);
 
 		_deathMenu.SetActive(true);
 
@@ -209,10 +222,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddPoint()
     {
-        _points++;
-		_pointsText.text = "Score: " + _points.ToString();
-		_pointsText2.text = _points.ToString();
-
+		_points++;
 	}
 
     public void StartBonus(float speed, float time)

@@ -10,6 +10,6 @@ public class SetHighScore : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_text.text = "Highscore: " + HighScore.Instance.GetScore();
+		_text.text = "Highscore: " + HighScore.Instance.GetScore() + "m";
 	}
 }
