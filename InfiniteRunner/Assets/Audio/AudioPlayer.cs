@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
+
+    [SerializeField] private bool useNewSystem = true;
+    [SerializeField] private AudioClipSettings audioClipSettings;
+
+
     [SerializeField] private AudioClip _clip;
     [SerializeField, Range(0, 1f)] private float _volume = 0.45f;
 
@@ -27,6 +32,12 @@ public class AudioPlayer : MonoBehaviour
 
 	public void PlayClip(AudioClip clip)
     {
+        if (useNewSystem)
+        {
+            AudioManager.instance.PlayAudio(audioClipSettings);
+            return;
+        }
+
         if (_finishClipOnLoadScene || _dontDestroyOnLoad)
         {
             PlayClipDontDestroyOnLoad(clip);

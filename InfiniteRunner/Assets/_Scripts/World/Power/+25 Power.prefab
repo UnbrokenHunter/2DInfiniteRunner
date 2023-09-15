@@ -149,6 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Power
+    clip: {fileID: 8300000, guid: 15f4cfe398c0e474e9bc9629e003ac4c, type: 3}
+    volume: 0.1
   _clip: {fileID: 8300000, guid: 15f4cfe398c0e474e9bc9629e003ac4c, type: 3}
   _volume: 0.1
   _playOnStart: 0

@@ -156,6 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Heart
+    clip: {fileID: 8300000, guid: f0d060ec462b5b348bdbc75beb62b581, type: 3}
+    volume: 0.488
   _clip: {fileID: 8300000, guid: f0d060ec462b5b348bdbc75beb62b581, type: 3}
   _volume: 0.488
   _playOnStart: 0

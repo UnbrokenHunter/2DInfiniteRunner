@@ -532,9 +532,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Death
+    clip: {fileID: 8300000, guid: 79ab046d6c4596e4ca639c64259d37cd, type: 3}
+    volume: 0.25
   _clip: {fileID: 8300000, guid: 79ab046d6c4596e4ca639c64259d37cd, type: 3}
   _volume: 0.25
+  _playOnStart: 0
   _finishClipOnLoadScene: 1
+  _dontDestroyOnLoad: 0
+  _nextClip: {fileID: 0}
+  _loopClipTwo: 0
 --- !u!1 &6125911855467665083
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +644,9 @@ MonoBehaviour:
   _heartUI: {fileID: 0}
   _heartContainer: {fileID: 0}
   _points: 0
+  distanceScore: 0
   _pointsText: {fileID: 0}
+  _pointsText2: {fileID: 0}
   _powerLossMultiplier: 2
   _addPowerAmount: 50
   _power: 100
@@ -651,6 +662,8 @@ MonoBehaviour:
   _isFrozen: 0
   _deathFeedback: {fileID: 1583103664223148816}
   _deathMenu: {fileID: 0}
+  _mainTrail: {fileID: 0}
+  _powerTrail: {fileID: 0}
   OnJumpEvent:
     m_PersistentCalls:
       m_Calls:
@@ -709,9 +722,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Jump
+    clip: {fileID: 8300000, guid: 4c50d2b54806d8a429d51d369a99b3b0, type: 3}
+    volume: 0.75
   _clip: {fileID: 8300000, guid: 4c50d2b54806d8a429d51d369a99b3b0, type: 3}
   _volume: 0.75
+  _playOnStart: 0
   _finishClipOnLoadScene: 0
+  _dontDestroyOnLoad: 0
+  _nextClip: {fileID: 0}
+  _loopClipTwo: 0
 --- !u!114 &1189001528
 MonoBehaviour:
   m_ObjectHideFlags: 0

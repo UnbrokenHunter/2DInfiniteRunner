@@ -159,6 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Destroy
+    clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
+    volume: 0.4
   _clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
   _volume: 0.4
   _playOnStart: 0
@@ -257,6 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Point
+    clip: {fileID: 8300000, guid: b803909bee60f19448750b657dfe8264, type: 3}
+    volume: 0.2
   _clip: {fileID: 8300000, guid: b803909bee60f19448750b657dfe8264, type: 3}
   _volume: 0.2
   _playOnStart: 0
@@ -389,6 +399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Destroy
+    clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
+    volume: 0.4
   _clip: {fileID: 8300000, guid: e55b71e3dd1d3434b9090f21a72a27ad, type: 3}
   _volume: 0.4
   _playOnStart: 0

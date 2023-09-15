@@ -326,6 +326,50 @@ MonoBehaviour:
   _onlyShowOnFirstLoad: 0
   _destroyWithPlayer: 0
   _destroyAfter: 0
+--- !u!1 &284565357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284565358}
+  - component: {fileID: 284565359}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284565358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284565357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284565359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284565357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655b6ec0b9f2a2648a82231770be1212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &345994336
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +814,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Click
+    clip: {fileID: 8300000, guid: d8ff5eb9a27d86e45b1aba87a9a784f2, type: 3}
+    volume: 0.45
   _clip: {fileID: 8300000, guid: d8ff5eb9a27d86e45b1aba87a9a784f2, type: 3}
   _volume: 0.45
   _playOnStart: 0
@@ -1486,6 +1535,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 1
+  audioClipSettings:
+    name: Click
+    clip: {fileID: 8300000, guid: d8ff5eb9a27d86e45b1aba87a9a784f2, type: 3}
+    volume: 0.45
   _clip: {fileID: 8300000, guid: d8ff5eb9a27d86e45b1aba87a9a784f2, type: 3}
   _volume: 0.45
   _playOnStart: 0
@@ -1633,6 +1687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86fb561c46fe6d43b0bf64b50a5f35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useNewSystem: 0
+  audioClipSettings:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
   _clip: {fileID: 8300000, guid: 3227545af8e32c74b81369938a09f2c8, type: 3}
   _volume: 0.3
   _playOnStart: 1
