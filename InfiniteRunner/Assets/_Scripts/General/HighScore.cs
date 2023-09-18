@@ -7,6 +7,10 @@ public class HighScore : MonoBehaviour
 	public static HighScore Instance;
 
 	private int _highScore;
+	private int _coinCount;
+
+	public delegate void CoinEvent();  // delegate
+	public event CoinEvent CoinUpdate; // event
 
 	private void Awake()
 	{
@@ -29,5 +33,27 @@ public class HighScore : MonoBehaviour
 		{
 			_highScore = score;
 		}
+	}
+
+	public int CheckCoinCount()
+	{
+		return _coinCount;
+	}
+
+	public void UpdateCoinCount()
+	{
+		CoinUpdate?.Invoke();
+	}
+
+	public void AddCoin()
+	{
+		_coinCount++;
+		UpdateCoinCount();
+	}
+
+	public void UseCoin(int amt)
+	{
+		_coinCount -= amt;
+		UpdateCoinCount();
 	}
 }

@@ -19,7 +19,12 @@ public class Bar : MonoBehaviour
 
                 Destroy(transform.parent.gameObject);
             }
-        }
+            else
+            {
+				GetComponent<AudioPlayer>().PlayClip();
+				Destroy(transform.parent.gameObject);
+			}
+		}
     }
 
 

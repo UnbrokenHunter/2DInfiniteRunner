@@ -45,9 +45,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isInvincable;
     [SerializeField] private bool _isFrozen = false;
     [SerializeField] private MMF_Player _deathFeedback;
-    [SerializeField] private GameObject _deathMenu;
+	[SerializeField] private GameObject _deathMenu;
+	[SerializeField] private GameObject _respawnMenu;
 
-    [Space]
+	[Space]
 
     [SerializeField] private TrailRenderer _mainTrail;
     [SerializeField] private TrailRenderer _powerTrail;
@@ -191,19 +192,46 @@ public class PlayerController : MonoBehaviour
         OnDie?.Invoke();
 
         if (_isPowerSliderNotNull)
-            Destroy(_powerSlider.gameObject);
+            _powerSlider.gameObject.SetActive(false);
 
 		HighScore.Instance.CheckScore(distanceScore);
 
-		_deathMenu.SetActive(true);
+        if(HighScore.Instance.CheckCoinCount() > 0)
+        {
+            _respawnMenu.SetActive(true);
+        }
+        else
+        {
+			_deathMenu.SetActive(true);
+        }
+
+
 
         _isFrozen = true;
 
         return true;
-
     }
 
-    public void AddPower(float amt)
+    public void Respawn()
+    {
+		_powerSlider.gameObject.SetActive(true);
+
+		_respawnMenu.SetActive(false);
+		_isFrozen = false;
+
+        StartCoroutine(RespawnTime());
+
+	}
+
+	public IEnumerator RespawnTime()
+    {
+        _isInvincable = true;
+        yield return new WaitForSeconds(1f);
+        _isInvincable = false;
+    }
+
+
+	public void AddPower(float amt)
     {
         print("Add Power");
         _power += amt;

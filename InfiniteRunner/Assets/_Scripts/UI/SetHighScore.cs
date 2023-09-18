@@ -6,10 +6,10 @@ using UnityEngine;
 public class SetHighScore : MonoBehaviour
 {
 
-	[SerializeField] private TMP_Text _text;
+	[SerializeField] private TMP_Text _highScoreText;
 
 	private void OnEnable()
 	{
-		_text.text = "Highscore: " + HighScore.Instance.GetScore() + "m";
+		_highScoreText.text = "Highscore: " + HighScore.Instance.GetScore() + "m";
 	}
 }
