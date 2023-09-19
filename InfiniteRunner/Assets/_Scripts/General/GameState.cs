@@ -6,6 +6,8 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
 
+    public Gamemodes gamemode;
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,4 +38,11 @@ public class GameState : MonoBehaviour
         IsFirstLevelLoad = false;
     }
 
+}
+
+public enum Gamemodes
+{
+    Casual, 
+    Supersized,
+    Speedy
 }

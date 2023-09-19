@@ -7,6 +7,9 @@ public class PlayGame : MonoBehaviour
 {
 
 	[SerializeField] private bool withHeart = false;
+	[SerializeField] private Gamemodes gamemode;
+
+	[SerializeField] private bool useCurrentGamemode = false;
 
 	public void StartGame()
 	{
@@ -15,6 +18,9 @@ public class PlayGame : MonoBehaviour
 			RespawnBuffs.instance.BuyHeart();
 			print("Start with Heart Chosen");
 		}
+
+		if (!useCurrentGamemode) 
+			GameState.Instance.gamemode = gamemode;
 
 		SceneManager.LoadScene(1);
 	}

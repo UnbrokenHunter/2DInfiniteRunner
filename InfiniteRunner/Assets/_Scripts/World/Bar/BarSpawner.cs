@@ -9,6 +9,8 @@ public class BarSpawner : MonoBehaviour
     [SerializeField] private Vector2 _minMaxWidth;
     [SerializeField] private float _offscreenAmount;
 
+    [SerializeField] private float _supersizedScale = 2;
+
     [SerializeField] private GameObject[] _barPrefab;
 
     [SerializeField] private bool _hasIncreasedDifficulty;
@@ -24,12 +26,20 @@ public class BarSpawner : MonoBehaviour
     private int _spawnCount;
     private float _nextInterval = 10;
     private float _increaseDifficultyNumber;
+    private bool isSupersized = false;
 
     private void Start()
     {
         _spawnPos = transform.position;
         _increaseDifficultyNumber = Random.Range(_increaseDifficultyAfter.x, _increaseDifficultyAfter.y);
-    }
+		isSupersized = GameState.Instance.gamemode == Gamemodes.Supersized;
+
+        if (isSupersized)
+        {
+			_minMaxWidth = new Vector2 ( _minMaxWidth.x * _supersizedScale, _minMaxWidth.y * _supersizedScale);
+		}
+
+	}
 
     private void FixedUpdate()
     {

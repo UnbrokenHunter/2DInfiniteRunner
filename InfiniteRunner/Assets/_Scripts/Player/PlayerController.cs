@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpDecay;
     [SerializeField] private float _jumpMultiplier;
     [SerializeField] private float _jumpCostInPower;
+    [SerializeField] private float _speedyMultiplier = 1.5f;
 
     [Header("Misc")]
     [SerializeField] private bool _isInvincable;
@@ -85,6 +86,12 @@ public class PlayerController : MonoBehaviour
         _powerSlider.minValue = 0;
         _trailRend = GetComponentInChildren<TrailRenderer>();
         _spriteRend = GetComponentInChildren<MeshRenderer>();
+
+        if (GameState.Instance.gamemode == Gamemodes.Speedy)
+        {
+            _speed *= _speedyMultiplier;
+
+		}
     }
     public void OnToggle()
     {
