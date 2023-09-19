@@ -29,6 +29,7 @@ public class RespawnTimer : MonoBehaviour
 		{
 			HighScore.Instance.UseCoin(1);
 			Respawn.Invoke();
+			willRespawn = false;
 		}
 	}
 
@@ -40,7 +41,7 @@ public class RespawnTimer : MonoBehaviour
 
 	private IEnumerator RespawnWait()
 	{
-		var wait = new WaitForSeconds(time);
+		var wait = new WaitForSecondsRealtime(time);
 		for (int i = 0; i < itterations; i++) 
 		{
 			_greyImage.fillAmount = i / itterations + time; 

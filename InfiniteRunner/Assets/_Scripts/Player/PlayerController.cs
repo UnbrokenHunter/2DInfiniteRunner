@@ -213,9 +213,8 @@ public class PlayerController : MonoBehaviour
 			_deathMenu.SetActive(true);
         }
 
-
-
         _isFrozen = true;
+
 
         return true;
     }
@@ -226,8 +225,13 @@ public class PlayerController : MonoBehaviour
 
 		_respawnMenu.SetActive(false);
 		_isFrozen = false;
+		_deathFeedback.PlayFeedbacks();
+        AddPower(100);
+        AddHealth();
+        StartBonus(50, 5);
 
-        StartCoroutine(RespawnTime());
+        // The lightning power gives invincability
+		//StartCoroutine(RespawnTime());
 
 	}
 
