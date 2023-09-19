@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     [Header("Points")]
     [SerializeField] private int _points;
 	[SerializeField] private int distanceScore = 0;
-    [SerializeField] private TMP_Text _pointsText;
+    [SerializeField] private int minDistanceScore = 1000;
+	[SerializeField] private TMP_Text _pointsText;
     [SerializeField] private TMP_Text _pointsText2;
 
 	[Header("Power Variables")]
@@ -196,7 +197,7 @@ public class PlayerController : MonoBehaviour
 
 		HighScore.Instance.CheckScore(distanceScore);
 
-        if(HighScore.Instance.CheckCoinCount() > 0)
+        if(HighScore.Instance.CheckCoinCount() > 0 && distanceScore > minDistanceScore)
         {
             _respawnMenu.SetActive(true);
         }
