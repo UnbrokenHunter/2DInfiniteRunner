@@ -88,10 +88,9 @@ public class PlayerController : MonoBehaviour
         _spriteRend = GetComponentInChildren<MeshRenderer>();
 
         if (GameState.Instance.gamemode == Gamemodes.Speedy)
-        {
             _speed *= _speedyMultiplier;
 
-		}
+        Instantiate(SkinManager.instance.SelectedSkin().skinObj, transform);
     }
     public void OnToggle()
     {
@@ -226,11 +225,12 @@ public class PlayerController : MonoBehaviour
 		_respawnMenu.SetActive(false);
 		_isFrozen = false;
 		_deathFeedback.PlayFeedbacks();
+		
         AddPower(100);
         AddHealth();
         StartBonus(50, 5);
 
-        // The lightning power gives invincability
+        // The lightning power gives invincibility
 		//StartCoroutine(RespawnTime());
 
 	}

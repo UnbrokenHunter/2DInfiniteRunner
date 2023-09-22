@@ -10,6 +10,7 @@ public class SetCoinCount : MonoBehaviour
 	private void Start()
 	{
 		HighScore.Instance.CoinUpdate += UpdateText;
+		UpdateText();
 	}
 
 	private void UpdateText()

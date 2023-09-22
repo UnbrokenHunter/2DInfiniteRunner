@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -16,6 +18,9 @@ public class RespawnTimer : MonoBehaviour
 
 	[SerializeField] private UnityEvent Respawn;
 
+	[SerializeField] private int[] respawnCosts = { 1, 2, 4, 5 };
+	private int timesUpgraded = 0;
+
 	private bool willRespawn = false;
 
 	public void SetWillRespawn()
@@ -23,11 +28,18 @@ public class RespawnTimer : MonoBehaviour
 		willRespawn = true;
 	}
 
+	private int Cost()
+	{
+		var minMax = Math.Clamp(timesUpgraded, 0, respawnCosts.Length);
+		var cost = respawnCosts[minMax];
+		return cost;
+	}
 	public void TriggerRespawn()
 	{
-		if (HighScore.Instance.CheckCoinCount() > 0)
+		if (HighScore.Instance.CheckCoinCount() >= Cost())
 		{
-			HighScore.Instance.UseCoin(1);
+			HighScore.Instance.UseCoin(Cost());
+			timesUpgraded++;
 			Respawn.Invoke();
 			willRespawn = false;
 		}
@@ -37,6 +49,7 @@ public class RespawnTimer : MonoBehaviour
 	private void OnEnable()
 	{
 		StartCoroutine(RespawnWait());
+		GetComponentInChildren<TMP_Text>().text = Cost() + " Coin to Respawn";
 	}
 
 	private IEnumerator RespawnWait()

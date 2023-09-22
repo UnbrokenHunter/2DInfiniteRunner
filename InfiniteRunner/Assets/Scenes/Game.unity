@@ -737,7 +737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172423987}
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -11.493291, z: -17.838299}
+  m_LocalPosition: {x: 0.0000009536743, y: -11.493291, z: -17.838299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1306,7 +1306,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1189001522}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &256207990
 TrailRenderer:
@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -11.493291, z: -17.838299}
+  m_LocalPosition: {x: 0.0000009536743, y: -11.493291, z: -17.838299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2695,19 +2695,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5499622844135788344, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
   m_PrefabInstance: {fileID: 522139245}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &522139248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522139247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88addb8a893a91442af17a8d80831a20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _setOnEnable: 1
 --- !u!114 &522139249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3528,7 +3515,7 @@ Transform:
   m_Children:
   - {fileID: 1869584152}
   m_Father: {fileID: 1189001522}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &794579331
 TrailRenderer:
@@ -4994,7 +4981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 171329938}
+  m_FirstSelected: {fileID: 1599565465}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1264476588
@@ -11917,13 +11904,13 @@ PrefabInstance:
       propertyPath: managedReferences[2017907725373538304].RangeFalloff.m_Curve.Array.data[1].weightedMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8090162588687741786, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
+      propertyPath: m_Name
+      value: Default Skin
+      objectReference: {fileID: 0}
     - target: {fileID: 8148604795374980697, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _volume
       value: 0.586
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107354731098227204, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9107354732066502859, guid: 98a928fa5355f3d4396ea1aa4bdd9966, type: 3}
       propertyPath: _heartUI

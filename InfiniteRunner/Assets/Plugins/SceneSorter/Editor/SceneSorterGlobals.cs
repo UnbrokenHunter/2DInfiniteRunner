@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public class SceneSorterGlobals
 {
-    static public Texture2D LogoTexture { get; set; }
+    //static public Texture2D LogoTexture { get; set; }
     static public Texture2D LoadTexture { get; set; }
     static public Texture2D PlayTexture { get; set; }
 
@@ -19,7 +19,7 @@ public class SceneSorterGlobals
     static readonly public float ButtonHeight = 32;
 
     static readonly public float LeftMargin = 20.0f;
-    static readonly public float TopMargin = 45;
+    static readonly public float TopMargin = 10;
 
     static readonly public float HorizPad = 5.0f;
     static readonly public float VertPad = 5.0f;
@@ -32,7 +32,7 @@ public class SceneSorterGlobals
     public static void LoadMyResources()
     {
         // Load the textures we need.
-        LogoTexture = Resources.Load("SSGLogo") as Texture2D;
+        //LogoTexture = Resources.Load("SSGLogo") as Texture2D;
         LoadTexture = Resources.Load("SSGLoad") as Texture2D;
         PlayTexture = Resources.Load("SSGPlay") as Texture2D;
 
@@ -42,7 +42,7 @@ public class SceneSorterGlobals
         UpTexture = Resources.Load("SSGUp") as Texture2D;
         DownTexture = Resources.Load("SSGDown") as Texture2D;
 
-        Assert.IsNotNull(LogoTexture, "Logo texture is missing, try reinstalling unity package");
+        //Assert.IsNotNull(LogoTexture, "Logo texture is missing, try reinstalling unity package");
         Assert.IsNotNull(LoadTexture, "Load button texture is missing, try reinstalling unity package");
         Assert.IsNotNull(PlayTexture, "Play button texture is missing, try reinstalling unity package");
 

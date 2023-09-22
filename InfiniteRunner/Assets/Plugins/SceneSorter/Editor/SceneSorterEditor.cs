@@ -16,7 +16,7 @@ public class SceneSorterEditor : EditorWindow
 
     void OnEnable()
     {
-        if (SceneSorterGlobals.LogoTexture == null)
+        if (SceneSorterGlobals.LoveTexture == null)
         {
             SceneSorterGlobals.LoadMyResources();
         }
@@ -67,19 +67,9 @@ public class SceneSorterEditor : EditorWindow
     #region GUI
     void OnGUI()
     {
-        GUIDrawLogo();
         GUIDrawAndTestButtons();
     }
-
-    void GUIDrawLogo()
-    {
-        if (SceneSorterGlobals.LogoTexture != null)
-        {
-            Rect logoRect = new Rect(5, 5, SceneSorterGlobals.LogoTexture.width, SceneSorterGlobals.LogoTexture.height);
-            GUI.DrawTexture(logoRect, SceneSorterGlobals.LogoTexture);
-        }
-    }
-
+    
     void GUIDrawAndTestButtons()
     {
         int loveSceneIndex = -1;

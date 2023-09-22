@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
 		if (source.isPlaying) source.Stop();
 		source.clip = settings.clip;
 		source.volume = settings.volume;
+		source.loop = settings.loop;
 		source.Play();
 
 		print("Audio: " +  source.name);
@@ -51,4 +52,5 @@ public class AudioClipSettings
 	public string name;
 	public AudioClip clip;
 	[Range(0, 1f)] public float volume = 0.45f;
+	public bool loop = false;
 }

@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9107354732066502861}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1583103664223148816
 MonoBehaviour:
@@ -574,7 +574,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9107354732066502861}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1667773797964445695
 SphereCollider:
@@ -622,7 +622,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8866981484596259296}
   - {fileID: 3767022248812530355}
   - {fileID: 3055845904575395907}
   m_Father: {fileID: 0}
@@ -645,6 +644,7 @@ MonoBehaviour:
   _heartContainer: {fileID: 0}
   _points: 0
   distanceScore: 0
+  minDistanceScore: 1000
   _pointsText: {fileID: 0}
   _pointsText2: {fileID: 0}
   _powerLossMultiplier: 2
@@ -658,10 +658,12 @@ MonoBehaviour:
   _jumpDecay: 0.1
   _jumpMultiplier: 50
   _jumpCostInPower: 1.5
+  _speedyMultiplier: 1.5
   _isInvincable: 0
   _isFrozen: 0
   _deathFeedback: {fileID: 1583103664223148816}
   _deathMenu: {fileID: 0}
+  _respawnMenu: {fileID: 0}
   _mainTrail: {fileID: 0}
   _powerTrail: {fileID: 0}
   OnJumpEvent:
@@ -893,7 +895,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 1189001528}
         DebugActive: 0
-        SquashAndStretchTarget: {fileID: 8866981484596259296}
+        SquashAndStretchTarget: {fileID: 0}
         Mode: 0
         Axis: 4
         AnimateScaleDuration: 0.2
@@ -1049,7 +1051,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 1189001528}
         DebugActive: 0
-        TargetShaker: {fileID: 9107354731098227204}
+        TargetShaker: {fileID: 0}
         Duration: 1
         ResetShakerValuesAfterShake: 1
         ResetTargetValuesAfterShake: 1
@@ -1211,167 +1213,3 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!1001 &8973248342195572235
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9107354732066502861}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6cea052633315194c89867ece3ed9c7f, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6cea052633315194c89867ece3ed9c7f, type: 2}
-    - target: {fileID: 919132149155446097, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_Name
-      value: RoundedSquare
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
---- !u!1 &8090162588687741786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-  m_PrefabInstance: {fileID: 8973248342195572235}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9107354731098227204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8090162588687741786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b821aa41cbf734458af19d8c6507e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChannelMode: 0
-  Channel: 0
-  MMChannelDefinition: {fileID: 0}
-  ShakeDuration: 0.5
-  PlayOnAwake: 0
-  PermanentShake: 0
-  Interruptible: 1
-  AlwaysResetTargetValuesAfterShake: 0
-  CooldownBetweenShakes: 0
-  Shaking: 0
-  ForwardDirection: 1
-  TimescaleMode: 0
-  Mode: 0
-  TargetTransform: {fileID: 0}
-  TargetRectTransform: {fileID: 0}
-  ShakeSpeed: 20
-  ShakeRange: 50
-  ShakeMainDirection: {x: 0, y: 1, z: 0}
-  RandomizeDirection: 0
-  ShakeAltDirection: {x: 0, y: 1, z: 0}
-  RandomizeDirectionOnPlay: 0
-  AddDirectionalNoise: 1
-  DirectionalNoiseStrengthMin: {x: 0.25, y: 0.25, z: 0.25}
-  DirectionalNoiseStrengthMax: {x: 0.25, y: 0.25, z: 0.25}
-  RandomnessSeed: {x: 0, y: 0, z: 0}
-  RandomizeSeedOnShake: 1
-  UseAttenuation: 1
-  AttenuationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  StartShakingButton: 0
---- !u!4 &8866981484596259296 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31133260c8c51e147b97ed5518021c83, type: 3}
-  m_PrefabInstance: {fileID: 8973248342195572235}
-  m_PrefabAsset: {fileID: 0}
