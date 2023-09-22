@@ -44,5 +44,5 @@ public enum Gamemodes
 {
     Casual, 
     Supersized,
-    Speedy
+    Speedy,
 }
