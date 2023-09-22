@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Classic Blue
   m_EditorClassIdentifier: 
   name: Classic Blue
-  image: {fileID: 21300000, guid: 233d720e54ad593429a6e5f4d9197710, type: 3}
+  image: {fileID: 21300000, guid: 332dda28c766ba64d8fafa54bda70286, type: 3}
   skinObj: {fileID: 5901030825678563413, guid: 55287b72244882846baa1917ffca0404, type: 3}
   cost: 1
   purchased: 0
