@@ -6,9 +6,6 @@ public class HighScore : MonoBehaviour
 {
 	public static HighScore Instance;
 
-	private int _highScore;
-	private int _coinCount;
-
 	public delegate void CoinEvent();  // delegate
 	public event CoinEvent CoinUpdate; // event
 
@@ -25,19 +22,19 @@ public class HighScore : MonoBehaviour
 		}
 	}
 
-	public int GetScore() => _highScore;
+	public int GetScore() => PlayerPrefs.GetInt("Highscore");
 
 	public void CheckScore(int score)
 	{
-		if (score > _highScore)
+		if (score > PlayerPrefs.GetInt("Highscore"))
 		{
-			_highScore = score;
+			PlayerPrefs.SetInt("Highscore", score);
 		}
 	}
 
 	public int CheckCoinCount()
 	{
-		return _coinCount;
+		return PlayerPrefs.GetInt("Coin Count");
 	}
 
 	public void UpdateCoinCount()
@@ -47,13 +44,13 @@ public class HighScore : MonoBehaviour
 
 	public void AddCoin()
 	{
-		_coinCount++;
+		PlayerPrefs.SetInt("Coin Count", CheckCoinCount() + 1);
 		UpdateCoinCount();
 	}
 
 	public void UseCoin(int amt)
 	{
-		_coinCount -= amt;
+		PlayerPrefs.SetInt("Coin Count", CheckCoinCount() - amt);
 		UpdateCoinCount();
 	}
 }

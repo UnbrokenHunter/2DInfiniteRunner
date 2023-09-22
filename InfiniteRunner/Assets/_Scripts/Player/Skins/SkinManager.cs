@@ -25,6 +25,19 @@ public class SkinManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        foreach (var skin in skins)
+        {
+            try
+            {
+				if (PlayerPrefs.GetInt(skin.name) == 1)
+                {
+                    skin.purchased = true;
+                }
+			}
+			catch { }
+        }
+
     }
 
     public bool SelectSkin(Skin skin)
@@ -45,6 +58,7 @@ public class SkinManager : MonoBehaviour
         if (HighScore.Instance.CheckCoinCount() < skin.cost) return false;
         
         HighScore.Instance.UseCoin(skin.cost);
+        PlayerPrefs.SetInt(skin.name, 1);
         skin.purchased = true;
         return true;
     }
